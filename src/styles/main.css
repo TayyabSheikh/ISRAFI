@@ -1,0 +1,38 @@
+.App{
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+.App-header{
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10%;
+}
+.App-intro{
+    text-align: end;
+}
+.App-title{
+    font-size: 5em;
+}
+.Para{
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+
+}
+#fileuploader{
+    background-color: black;
+    width: 80%;
+}
+.second{
+    align-items: center;
+    justify-content: center;
+}
+.cardpanel{
+    padding-top: 2%;
+}
