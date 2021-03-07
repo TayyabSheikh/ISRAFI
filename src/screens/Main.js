@@ -86,18 +86,19 @@ class Main extends Component {
                         (
                             <div>
                                 <div className="container mt-4">
+                                
                                     <FileInput></FileInput>
                                 </div>
                                 <div className="container cardpanel">
                                     <div className = "row">
                                         <div className = "col-sm">
-                                            <CardPanel title = "Upscale Data" disc = "Choose from multiple techniques to the data to your desired scale."></CardPanel> 
+                                            <CardPanel linkto = "Upscale" title = "Upscale Data" disc = "Choose from multiple techniques to the data to your desired scale."></CardPanel> 
                                         </div>
                                         <div className = "col-sm">
-                                            <CardPanel title = "Recognize Actions" disc = "Get a detailed report of all the actions recognized in the data."></CardPanel>
+                                            <CardPanel linkto = "RecognizeActions" title = "Recognize Actions" disc = "Get a detailed report of all the actions recognized in the data."></CardPanel>
                                         </div>
                                         <div className = "col-sm">
-                                            <CardPanel title = "Extract Faces" disc = "Use Artificial Intelligence to extract Faces from the data."></CardPanel>
+                                            <CardPanel linkto = "ExtractFaces" title = "Extract Faces" disc = "Use Artificial Intelligence to extract Faces from the data."></CardPanel>
                                         </div>
                                     </div>
                                 </div>

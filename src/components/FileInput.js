@@ -7,7 +7,7 @@ export default function FileInput(props1) {
   const [file, setFile] = useState('');
   const [fileName, setFileName] = useState('Choose File');
   const [error, setError] = useState(false)
-
+  const [uploadPercentage, setUploadPercentage] = useState(0)
 
   const onChange = e => {
     setFile(e.target.files[0]) //Can be changed to adjust for multiple files
@@ -16,7 +16,7 @@ export default function FileInput(props1) {
 
   }
   const onClick = e => {
-    if (fileName == "Choose File") {
+    if (fileName === "Choose File") {
       console.log("error")
       setError(true)
     }
@@ -27,6 +27,9 @@ export default function FileInput(props1) {
       data.append('file', file)
       axios.post("http://localhost:9000/upload", data, {
         // receive two    parameter endpoint url ,form data
+        onUploadProgress : progressEvent => {
+          setUploadPercentage(parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total)))
+        }
       })
         .then(res => { // then print response status
           console.log(res.statusText)
@@ -38,29 +41,36 @@ export default function FileInput(props1) {
     console.log('yes')
   }
   const props = useSpring({ opacity: 1, delay: 0, from: { opacity: 0 } })
-  
+
   return (
-    
+
     <animated.div style={props}>
-      
+
       <Fragment >
+        
         <form onSubmit={onSubmit}>
           <div className="input-group">
+
+
+            <input
+              style={{
+                borderWidth: 1,
+                borderColor: error ? 'red' : 'gray'
+              }}
+
+              type="file" className="form-control" onChange={onChange} accept="" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
             
-            
-            <input 
-            style = {{
-              borderWidth : 1,
-              borderColor : error ?  'red' : 'gray'
-            }}
-            type="file" className="form-control" onChange={onChange} accept=".jpeg" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
-            <button style = {{
-              backgroundColor : error ? 'red' : 'transparent',
-              color : error ? 'white' : 'black'
+            <button style={{
+              backgroundColor: error ? 'red' : 'transparent',
+              color: error ? 'white' : 'black'
             }} className="btn btn-outline-secondary" onClick={onClick} type="button" id="inputGroupFileAddon04">Upload</button>
           </div>
-        </form>
 
+        </form>
+        
+        <div className="progress" style = {{marginTop : 10}}>
+              <div className="progress-bar" role="progressbar" style={{ width: uploadPercentage.toString() + "%" }} aria-valuenow={uploadPercentage} aria-valuemin="0" aria-valuemax="100">{uploadPercentage + "%"}</div>
+        </div>
 
       </Fragment>
 

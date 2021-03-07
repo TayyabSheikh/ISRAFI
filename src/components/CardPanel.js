@@ -41,21 +41,22 @@ export default function OutlinedCard(props) {
     const history = useHistory()
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
+    const link = props.linkto;
     const [getresponse, setresponse] = useState('no response')
     //setTitle(props.title)
 
-    async function callAPI() {
-        await fetch("http://localhost:9000/upscale")
-            .then(res => res.text())
-            .then(res => { setresponse(res) })
-            .catch(err => err);
-    }
+    // async function callAPI() {
+    //     await fetch("http://localhost:9000/upscale")
+    //         .then(res => res.text())
+    //         .then(res => { setresponse(res) })
+    //         .catch(err => err);
+    // }
     const onClick = e => {
         e.preventDefault()
         console.log('click')
-        callAPI()
+        //callAPI()
         history.push({
-            pathname : '/test',
+            pathname : '/' + link,
             state: {detail : 1}
         })
 
@@ -63,9 +64,7 @@ export default function OutlinedCard(props) {
     }
     return (
         <CardActionArea>
-            {useEffect(() => {
-                console.log(getresponse)
-            })}
+            
             <Card onClick={onClick} className={classes.root} variant="outlined">
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
