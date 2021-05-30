@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /public
+/scripts
 /scripts/faces
 /scripts/updated_images
 /scripts/images
